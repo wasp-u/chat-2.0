@@ -9,9 +9,9 @@ import { UseControllerProps, useController } from "react-hook-form";
 
 export interface UseFormFieldProps<
 	TValue = string,
-	TOutputValue = TValue,
-	TTransformValue = TValue,
-	TOutputTransformValue = TTransformValue
+	// TOutputValue = TValue,
+	TTransformValue = TValue
+	// TOutputTransformValue = TTransformValue
 > extends Omit<UseControllerProps, "control" | "defaultValue"> {
 	// transform?: TransformSchema<TValue, TOutputValue, TTransformValue, TOutputTransformValue>
 	defaultValue?: TTransformValue;
@@ -20,8 +20,8 @@ export interface UseFormFieldProps<
 export const useFormField = <
 	TValue = string,
 	TOutputValue = TValue,
-	TTransformValue = TValue,
-	TOutputTransformValue = TTransformValue
+	TTransformValue = TValue
+	// TOutputTransformValue = TTransformValue
 >({
 	// transform,
 	name,
@@ -30,9 +30,9 @@ export const useFormField = <
 	shouldUnregister,
 }: UseFormFieldProps<
 	TValue,
-	TOutputValue,
-	TTransformValue,
-	TOutputTransformValue
+	// TOutputValue,
+	TTransformValue
+	// TOutputTransformValue
 >) => {
 	const { field, fieldState, formState } = useController<
 		Record<string, unknown>

@@ -1,4 +1,4 @@
-import { Box, Card, Stack, Typography } from "@mui/material";
+import { Card, Stack, Typography } from "@mui/material";
 import dayjs from "dayjs";
 import { MessageModel } from "../../../entities/chat/model";
 import { useSession } from "../../../app/providers/AuthProvider";

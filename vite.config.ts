@@ -16,4 +16,5 @@ export default defineConfig({
 			include: "**/*.svg",
 		}),
 	],
+	base: "/chat-2.0/",
 });

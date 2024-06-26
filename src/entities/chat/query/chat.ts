@@ -1,12 +1,6 @@
-import {
-	UseInfiniteQueryOptions,
-	UseQueryOptions,
-	useInfiniteQuery,
-	useMutation,
-	useQuery,
-} from "react-query";
+import { useInfiniteQuery, useMutation, useQuery } from "react-query";
 import { getChat, getChatMessages, getUserChats } from "../api";
-import { ChatModel, MessageModel } from "../model";
+import { ChatModel } from "../model";
 
 export const MESSAGES_QUERY_KEY = ["chat/messages"];
 export const CHATS_QUERY_KEY = ["chats"];

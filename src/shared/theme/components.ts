@@ -1,7 +1,6 @@
 import type { Components } from "@mui/material";
 
 import { breakpoints } from "./breakpoints";
-import { palette } from "./palette";
 
 export const components: Components = {
 	MuiCssBaseline: {
