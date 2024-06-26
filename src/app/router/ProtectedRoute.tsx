@@ -14,5 +14,5 @@ export function ProtectedRoute({ children }: Props) {
         if (!isAuth) navigate('/sign-in')
     }, [isAuth])
 
-    return { children }
+    return <>{children}</>
 }

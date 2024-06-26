@@ -33,5 +33,6 @@ module.exports = {
         'no-bitwise': 'off',
         'react/require-default-props': 'off',
         'react/display-name': 'off',
+        'react/jsx-no-useless-fragment': 'warn',
     },
 }
