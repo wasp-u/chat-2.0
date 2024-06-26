@@ -1,8 +1,8 @@
-import { z } from "zod";
+import { z } from 'zod'
 
 export const LoginFormSchema = z.object({
-	email: z.string().email(),
-	password: z.string().min(8),
-});
+    email: z.string().email(),
+    password: z.string().min(8),
+})
 
-export type LoginFormValues = z.infer<typeof LoginFormSchema>;
+export type LoginFormValues = z.infer<typeof LoginFormSchema>

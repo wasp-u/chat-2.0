@@ -1,9 +1,9 @@
-import { z } from "zod";
+import { z } from 'zod'
 
 export const SingUpFormSchema = z.object({
-	fullName: z.string().min(1),
-	email: z.string().email(),
-	password: z.string().min(8),
-});
+    fullName: z.string().min(1),
+    email: z.string().email(),
+    password: z.string().min(8),
+})
 
-export type SignUpFormValues = z.infer<typeof SingUpFormSchema>;
+export type SignUpFormValues = z.infer<typeof SingUpFormSchema>

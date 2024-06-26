@@ -1,7 +1,8 @@
-import { InternalAxiosRequestConfig } from "axios";
+import { InternalAxiosRequestConfig } from 'axios'
 
 export const AuthInterceptor = (config: InternalAxiosRequestConfig) => {
-	config.headers.Authorization = `Bearer ${localStorage.getItem("token")}`;
+    const configWithHeader = { ...config }
+    configWithHeader.headers.Authorization = `Bearer ${localStorage.getItem('token')}`
 
-	return config;
-};
+    return configWithHeader
+}

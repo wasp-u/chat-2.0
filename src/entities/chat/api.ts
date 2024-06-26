@@ -1,40 +1,40 @@
-import Api from "../../shared/services";
-import { ChatModel, MessageModel } from "./model";
+import Api from '../../shared/services'
+import { ChatModel, MessageModel } from './model'
 
 export const getChat = async (data: { userId: string }) => {
-	const res = await Api.post<ChatModel>("api/v1/chat", { data });
+    const res = await Api.post<ChatModel>('api/v1/chat', { data })
 
-	return res;
-};
+    return res
+}
 
 export const sendMessage = async (data: {
-	otherUserId: string;
-	postedByUser: string;
-	messageText: string;
+    otherUserId: string
+    postedByUser: string
+    messageText: string
 }) => {
-	const res = await Api.post<void>("api/v1/chat/message", { data });
+    const res = await Api.post<void>('api/v1/chat/message', { data })
 
-	return res;
-};
+    return res
+}
 
 export const getChatMessages = async (chatRoomId: string, page: number) => {
-	const res = await Api.get<MessageModel[]>("api/v1/chat/messages", {
-		params: { chatRoomId, page },
-	});
+    const res = await Api.get<MessageModel[]>('api/v1/chat/messages', {
+        params: { chatRoomId, page },
+    })
 
-	return res;
-};
+    return res
+}
 
 export const getUserChats = async () => {
-	const res = await Api.get<ChatModel[]>("api/v1/chats");
+    const res = await Api.get<ChatModel[]>('api/v1/chats')
 
-	return res;
-};
+    return res
+}
 
 export const viewMessages = async (chatRoomId: string, otherUserId: string) => {
-	const res = await Api.put<void>("api/v1/chat/messages", {
-		params: { chatRoomId, otherUserId },
-	});
+    const res = await Api.put<void>('api/v1/chat/messages', {
+        params: { chatRoomId, otherUserId },
+    })
 
-	return res;
-};
+    return res
+}

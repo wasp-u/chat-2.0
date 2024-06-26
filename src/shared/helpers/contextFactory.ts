@@ -1,19 +1,19 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext } from 'react'
 
 export const contextFactory = <TContext = null>() => {
-	const context = createContext<TContext | undefined>(undefined);
+    const context = createContext<TContext | undefined>(undefined)
 
-	const useCtx = () => {
-		const ctx = useContext(context);
+    const useCtx = () => {
+        const ctx = useContext(context)
 
-		if (ctx === undefined) {
-			throw new Error(
-				"useContext must be used inside of a Provider with a value."
-			);
-		}
+        if (ctx === undefined) {
+            throw new Error(
+                'useContext must be used inside of a Provider with a value.'
+            )
+        }
 
-		return ctx;
-	};
+        return ctx
+    }
 
-	return [useCtx, context] as const;
-};
+    return [useCtx, context] as const
+}

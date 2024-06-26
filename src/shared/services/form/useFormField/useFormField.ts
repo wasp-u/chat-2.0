@@ -1,5 +1,5 @@
-import { useCallback } from "react";
-import { UseControllerProps, useController } from "react-hook-form";
+import { useCallback } from 'react'
+import { UseControllerProps, useController } from 'react-hook-form'
 
 // import {
 // 	TransformSchema,
@@ -8,58 +8,58 @@ import { UseControllerProps, useController } from "react-hook-form";
 // } from "../../form.utils";
 
 export interface UseFormFieldProps<
-	TValue = string,
-	// TOutputValue = TValue,
-	TTransformValue = TValue
-	// TOutputTransformValue = TTransformValue
-> extends Omit<UseControllerProps, "control" | "defaultValue"> {
-	// transform?: TransformSchema<TValue, TOutputValue, TTransformValue, TOutputTransformValue>
-	defaultValue?: TTransformValue;
+    TValue = string,
+    // TOutputValue = TValue,
+    TTransformValue = TValue,
+    // TOutputTransformValue = TTransformValue
+> extends Omit<UseControllerProps, 'control' | 'defaultValue'> {
+    // transform?: TransformSchema<TValue, TOutputValue, TTransformValue, TOutputTransformValue>
+    defaultValue?: TTransformValue
 }
 
 export const useFormField = <
-	TValue = string,
-	TOutputValue = TValue,
-	TTransformValue = TValue
-	// TOutputTransformValue = TTransformValue
+    TValue = string,
+    TOutputValue = TValue,
+    TTransformValue = TValue,
+    // TOutputTransformValue = TTransformValue
 >({
-	// transform,
-	name,
-	defaultValue,
-	rules,
-	shouldUnregister,
+    // transform,
+    name,
+    defaultValue,
+    rules,
+    shouldUnregister,
 }: UseFormFieldProps<
-	TValue,
-	// TOutputValue,
-	TTransformValue
-	// TOutputTransformValue
+    TValue,
+    // TOutputValue,
+    TTransformValue
+    // TOutputTransformValue
 >) => {
-	const { field, fieldState, formState } = useController<
-		Record<string, unknown>
-	>({
-		name,
-		rules,
-		defaultValue,
-		shouldUnregister,
-	});
+    const { field, fieldState, formState } = useController<
+        Record<string, unknown>
+    >({
+        name,
+        rules,
+        defaultValue,
+        shouldUnregister,
+    })
 
-	// const error = getFormErrorByName(formState.errors, name)
-	// const { input, output } = getTransformHandler(transform)
+    // const error = getFormErrorByName(formState.errors, name)
+    // const { input, output } = getTransformHandler(transform)
 
-	const onChange = useCallback(
-		(value: TOutputValue) => {
-			// field.onChange(output(value))
-			field.onChange(value);
-		},
-		[field.onChange]
-	);
+    const onChange = useCallback(
+        (value: TOutputValue) => {
+            // field.onChange(output(value))
+            field.onChange(value)
+        },
+        [field.onChange]
+    )
 
-	const value = field.value as TValue;
+    const value = field.value as TValue
 
-	return {
-		field: { ...field, onChange, value },
-		formState,
-		fieldState,
-		error: "",
-	};
-};
+    return {
+        field: { ...field, onChange, value },
+        formState,
+        fieldState,
+        error: '',
+    }
+}

@@ -1,6 +1,6 @@
-"use client";
+'use client'
 
-import { forwardRef } from "react";
+import { forwardRef } from 'react'
 
 // import {
 // 	TextInput,
@@ -10,68 +10,68 @@ import { forwardRef } from "react";
 // 	UseFormFieldProps,
 // 	useFormField,
 // } from "~/shared/services/form/useFormField";
-import { TextInputBaseRef } from "../../base/TextInputBase";
-import { TextInput, TextInputProps } from "../../inputs/TextInput";
+import { TextInputBaseRef } from '../../base/TextInputBase'
+import { TextInput, TextInputProps } from '../../inputs/TextInput'
 import {
-	UseFormFieldProps,
-	useFormField,
-} from "../../../services/form/useFormField";
+    UseFormFieldProps,
+    useFormField,
+} from '../../../services/form/useFormField'
 
-type Value = string | number | null | undefined;
+type Value = string | number | null | undefined
 
 type TextInputCustomProps = Omit<
-	TextInputProps,
-	"value" | "name" | "defaultValue" | "onChange"
->;
+    TextInputProps,
+    'value' | 'name' | 'defaultValue' | 'onChange'
+>
 
-type TextFiledRef = TextInputBaseRef;
+type TextFiledRef = TextInputBaseRef
 export interface TextFieldProps
-	extends TextInputCustomProps,
-		UseFormFieldProps<Value> {
-	value?: Value;
-	hideError?: boolean;
+    extends TextInputCustomProps,
+        UseFormFieldProps<Value> {
+    value?: Value
+    hideError?: boolean
 }
 
 export const TextField = forwardRef(
-	(
-		{
-			name,
-			size,
-			rules,
-			value,
-			// transform,
-			defaultValue = "",
-			shouldUnregister,
-			error: isError,
-			errorMessage: controlledError,
-			hideError,
-			...restProps
-		}: TextFieldProps,
-		ref: TextFiledRef
-	) => {
-		const { field, error } = useFormField<Value>({
-			name,
-			rules,
-			// transform,
-			defaultValue: value ?? defaultValue,
-			shouldUnregister,
-		});
+    (
+        {
+            name,
+            size,
+            rules,
+            value,
+            // transform,
+            defaultValue = '',
+            shouldUnregister,
+            error: isError,
+            errorMessage: controlledError,
+            hideError,
+            ...restProps
+        }: TextFieldProps,
+        ref: TextFiledRef
+    ) => {
+        const { field, error } = useFormField<Value>({
+            name,
+            rules,
+            // transform,
+            defaultValue: value ?? defaultValue,
+            shouldUnregister,
+        })
 
-		const { value: fieldValue, onChange, ...restField } = field;
-		const errorMessage = hideError ? "" : controlledError ?? error;
+        const { value: fieldValue, onChange, ...restField } = field
+        const errorMessage = hideError ? '' : controlledError ?? error
 
-		return (
-			<TextInput
-				{...restField}
-				ref={ref}
-				error={isError ?? !!error}
-				size={size ?? "medium"}
-				onChange={(e) => onChange(e.target.value)}
-				value={fieldValue}
-				errorMessage={errorMessage}
-				id={name}
-				{...restProps}
-			/>
-		);
-	}
-);
+        return (
+            <TextInput
+                {...restField}
+                ref={ref}
+                error={isError ?? !!error}
+                size={size ?? 'medium'}
+                onChange={(e) => onChange(e.target.value)}
+                value={fieldValue}
+                errorMessage={errorMessage}
+                id={name}
+                {...restProps}
+            />
+        )
+    }
+)
