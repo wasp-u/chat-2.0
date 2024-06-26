@@ -43,6 +43,9 @@ jobs:
   deploy:
     # Add a dependency to the build job
     needs: [build, lint]
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     # Specify runner + deployment step
     runs-on: ubuntu-latest
     steps:
