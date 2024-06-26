@@ -1,6 +1,6 @@
 name: DevOps-GitHibActions
 
-on: push
+on: [push, pull_request]
 
 jobs:
     # Build Job
