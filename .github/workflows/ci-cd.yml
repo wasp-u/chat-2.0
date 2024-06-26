@@ -57,6 +57,7 @@ jobs:
 
   # Deploy Job
   deploy:
+    needs: [build, lint]
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
