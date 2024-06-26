@@ -2,7 +2,7 @@ import Api from "../../shared/services";
 import { ChatModel, MessageModel } from "./model";
 
 export const getChat = async (data: { userId: string }) => {
-	const res = await Api.post<any>("api/v1/chat", { data });
+	const res = await Api.post<ChatModel>("api/v1/chat", { data });
 
 	return res;
 };
@@ -12,7 +12,7 @@ export const sendMessage = async (data: {
 	postedByUser: string;
 	messageText: string;
 }) => {
-	const res = await Api.post<any>("api/v1/chat/message", { data });
+	const res = await Api.post<void>("api/v1/chat/message", { data });
 
 	return res;
 };

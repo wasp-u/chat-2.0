@@ -16,8 +16,6 @@ export interface TextInputProps
 	extends TextInputBaseProps,
 		TextInputFormControlProps {
 	id?: string;
-	isSuccess?: boolean;
-	isFilled?: boolean;
 	FormControlProps?: FormControlProps;
 	InputLabelProps?: {
 		htmlFor?: string;
@@ -38,10 +36,7 @@ export const TextInput = forwardRef(
 			required,
 			fullWidth = false,
 			disabled,
-			isSuccess,
-			isFilled: controlledIsFilled,
 			FormControlProps: formControlProps,
-			className,
 			InputLabelProps,
 			...props
 		}: TextInputProps,

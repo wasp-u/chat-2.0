@@ -23,9 +23,7 @@ export const Message = ({ message }: Props) => {
 				alignSelf: isMyMessage ? "flex-end" : "flex-start",
 				maxWidth: "80%",
 				...(isMyMessage
-					? {
-							borderBottomRightRadius: 0,
-					  }
+					? { borderBottomRightRadius: 0 }
 					: { borderBottomLeftRadius: 0 }),
 			}}
 		>

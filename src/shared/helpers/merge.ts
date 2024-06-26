@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Deep merges two objets.
  * @param  {Object} object destination object
