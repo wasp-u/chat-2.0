@@ -8,6 +8,8 @@ import { RouterProvider } from "react-router-dom";
 import { QueryProvider } from "./app/providers/QueryProvider";
 
 const App = () => {
+	console.log("hello");
+
 	return (
 		<AuthProvider>
 			<QueryProvider>
