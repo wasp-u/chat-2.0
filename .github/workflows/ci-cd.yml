@@ -1,86 +1,86 @@
 name: DevOps-GitHibActions
 
 on:
-  # Runs on pushes targeting the default branch
-  push:
-    branches: ["main"]
+    # Runs on pushes targeting the default branch
+    push:
+        branches: ['main']
 
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
+    # Allows you to run this workflow manually from the Actions tab
+    workflow_dispatch:
 
 # Sets the GITHUB_TOKEN permissions to allow deployment to GitHub Pages
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+    contents: read
+    pages: write
+    id-token: write
 
 # Allow one concurrent deployment
 concurrency:
-  group: "pages"
-  cancel-in-progress: true
+    group: 'pages'
+    cancel-in-progress: true
 
 jobs:
-  # Build Job
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
-      - name: Install Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18.x
-      - name: Install Dependencies
-        run: yarn
-      - name: Build Project
-        run: yarn build
-      - name: Upload artifact to enable deployment
-        uses: actions/upload-artifact@v3
-        with:
-          name: production-files
-          path: ./dist
+    # Build Job
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout Code
+              uses: actions/checkout@v3
+            - name: Install Node
+              uses: actions/setup-node@v3
+              with:
+                  node-version: 20
+            - name: Install Dependencies
+              run: yarn
+            - name: Build Project
+              run: yarn build
+            - name: Upload artifact to enable deployment
+              uses: actions/upload-artifact@v3
+              with:
+                  name: production-files
+                  path: ./dist
 
-  # Lint Job
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
-      - name: Install Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 20.x
-      - name: Install Dependencies
-        run: yarn
-      - name: Check lint
-        run: yarn lint
+    # Lint Job
+    lint:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout Code
+              uses: actions/checkout@v3
+            - name: Install Node
+              uses: actions/setup-node@v3
+              with:
+                  node-version: 20
+            - name: Install Dependencies
+              run: yarn
+            - name: Check lint
+              run: yarn lint
 
-  # Deploy Job
-  deploy:
-    needs: [build, lint]
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      #   - name: Set up Node
-      #     uses: actions/setup-node@v4
-      #     with:
-      #       node-version: 20
-      #       cache: "yarn"
-      #   - name: Install dependencies
-      #     run: yarn
-      #   - name: Build
-      #     run: yarn build
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          # Upload dist folder
-          path: "./dist"
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+    # Deploy Job
+    deploy:
+        needs: [build, lint]
+        environment:
+            name: github-pages
+            url: ${{ steps.deployment.outputs.page_url }}
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+            - name: Set up Node
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 20
+                  cache: 'yarn'
+            - name: Install dependencies
+              run: yarn
+            - name: Build
+              run: yarn build
+            - name: Setup Pages
+              uses: actions/configure-pages@v4
+            - name: Upload artifact
+              uses: actions/upload-pages-artifact@v3
+              with:
+                  # Upload dist folder
+                  path: './dist'
+            - name: Deploy to GitHub Pages
+              id: deployment
+              uses: actions/deploy-pages@v4
