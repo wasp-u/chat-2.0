@@ -8,6 +8,8 @@ import { RefreshSession } from './app/RefreshSession'
 import { QueryProvider } from './app/providers/QueryProvider'
 
 function App() {
+    console.log('test')
+
     return (
         <AuthProvider>
             <QueryProvider>
